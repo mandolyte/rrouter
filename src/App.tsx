@@ -5,7 +5,7 @@ import './App.css';
 function App() {
   return (
     <Router>
-      <QueryParamsDemo />
+      <QueryApi />
     </Router>
   );
 }
@@ -17,44 +17,41 @@ function useQuery() {
   return new URLSearchParams(useLocation().search);
 }
 
-function QueryParamsDemo() {
+function QueryApi() {
   let query = useQuery();
 
   return (
     <div>
       <div>
-        <h2>Accounts</h2>
+        <h2>Book Package API</h2>
         <ul>
           <li>
-            <Link to="/account?name=netflix">Netflix</Link>
+            <Link to="/book-package-app?books=gen,exo">Book Package</Link>
           </li>
           <li>
-            <Link to="/account?name=zillow-group">Zillow Group</Link>
+            <Link to="/book-package-app?books=mat,mar&format=text">Book Package Total as string</Link>
           </li>
           <li>
-            <Link to="/account?name=yahoo">Yahoo</Link>
-          </li>
-          <li>
-            <Link to="/account?name=modus-create">Modus Create</Link>
+            <Link to="/book-package-app?books=1jn,2jn,3jn&format=csv">Book Package Details as CSV</Link>
           </li>
         </ul>
 
-        <Child name={query.get("name")} />
+        <BP books={query.get("books")} format={query.get("format")} />
       </div>
     </div>
   );
 }
 
-function Child({ name }: {name: string|null;}) {
+function BP({ books, format }: {books: string|null; format: string|null; }) {
   return (
     <div>
-      {name ? (
+      {books ? (
         <h3>
-          The <code>name</code> in the query string is &quot;{name}
-          &quot;
+          The value of <code>books</code> in the query string is &quot;{books}&quot;<br/>
+          The value of <code>format</code> in the query string is &quot;{format}&quot;
         </h3>
       ) : (
-        <h3>There is no name in the query string</h3>
+        <h3>There are no books in the query string</h3>
       )}
     </div>
   );
