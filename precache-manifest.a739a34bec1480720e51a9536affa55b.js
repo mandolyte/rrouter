@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "7aa0ca08e254fb41ee6c795f36276e01",
+    "revision": "081250e8935dea0e8512c103ec04511a",
     "url": "/rrouter/index.html"
   },
   {
-    "revision": "18814a9a3a415e09a570",
+    "revision": "9b10d4eb62db2d21aaa4",
     "url": "/rrouter/static/css/main.d1b05096.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/rrouter/static/js/2.8246c87c.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "18814a9a3a415e09a570",
-    "url": "/rrouter/static/js/main.0ca60898.chunk.js"
+    "revision": "9b10d4eb62db2d21aaa4",
+    "url": "/rrouter/static/js/main.5caa014c.chunk.js"
   },
   {
     "revision": "2ce3f5a5822aa2a13d98",
