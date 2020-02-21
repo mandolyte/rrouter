@@ -48,10 +48,10 @@ function QueryApi() {
             <Link to="/rrouter?books=gen,exo">Book Package</Link>
           </li>
           <li>
-          <Link to="/rrouter/download?books=gen,exo&format=string">Book Package Total as string</Link>            
+          <Link to="/rrouter?books=gen,exo&format=string">Book Package Total as string</Link>            
           </li>
           <li>
-            <Link to="/rrouter/download?books=1jn,2jn,3jn&format=csv">Book Package Details as CSV</Link>
+            <Link to="/rrouter?books=1jn,2jn,3jn&format=csv">Book Package Details as CSV</Link>
           </li>
         </ul>
 
