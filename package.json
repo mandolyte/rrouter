@@ -2,6 +2,12 @@
   "name": "rrouter",
   "version": "0.1.0",
   "private": true,
+  "description": "A React Application Book Packages.",
+  "homepage": "https://mandolyte.github.io/rrouter/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mandolyte/rrouter"
+  },
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
