@@ -45,13 +45,13 @@ function QueryApi() {
         <h2>Book Package API</h2>
         <ul>
           <li>
-            <Link to="/book-package-app?books=gen,exo">Book Package</Link>
+            <Link to="/rrouter?books=gen,exo">Book Package</Link>
           </li>
           <li>
-          <Link to="/book-package-app/download?books=gen,exo&format=string">Book Package Total as string</Link>            
+          <Link to="/rrouter/download?books=gen,exo&format=string">Book Package Total as string</Link>            
           </li>
           <li>
-            <Link to="/book-package-app/download?books=1jn,2jn,3jn&format=csv">Book Package Details as CSV</Link>
+            <Link to="/rrouter/download?books=1jn,2jn,3jn&format=csv">Book Package Details as CSV</Link>
           </li>
         </ul>
 
