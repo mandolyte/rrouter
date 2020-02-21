@@ -1,6 +1,12 @@
 # rrouter
 A "hello world" example using React Router
 
+If running locally, then the first URL below will download a CSV file and the second a short string.
+
+- http://localhost:3000/book-package-app/?format=csv&books=gen,mat
+- http://localhost:3000/book-package-app/?format=string&books=1jn,2jn,3jn
+
+
 ## Links
 
 - *Installing Typescript*: https://www.typescriptlang.org/#download-links
