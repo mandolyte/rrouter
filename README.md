@@ -3,8 +3,15 @@ A "hello world" example using React Router
 
 If running locally, then the first URL below will download a CSV file and the second a short string.
 
-- http://localhost:3000/book-package-app/?format=csv&books=gen,mat
-- http://localhost:3000/book-package-app/?format=string&books=1jn,2jn,3jn
+- http://localhost:3000/rrouter/?format=csv&books=gen,mat
+- http://localhost:3000/rrouter/?format=string&books=1jn,2jn,3jn
+
+**Note** that the below curl does not work. Since `curl` is not a browser or have a javascript engine, none of the code here has anyplace to actually exectute:
+```
+curl -X GET "https://mandolyte.github.io/rrouter/?format=csv&books=gen,mat" 
+```
+
+One nice thing about running locally is that the URL can be anything. The only thing that matters is the `localhost:3000` part. Anything after that is simply passed into the application. This means I can simulate to some extent having a web server. In short, the `<Switch>` component will work.
 
 
 ## Links
@@ -17,6 +24,7 @@ If running locally, then the first URL below will download a CSV file and the se
 and the beta v2 playground: https://www.typescriptlang.org/v2/en/play
 - *React Cheatsheets*: https://github.com/typescript-cheatsheets/react-typescript-cheatsheet#reacttypescript-cheatsheets
 
+Links on React router training: https://reacttraining.com/react-router/web/example/basic
 
 ## Notes on Project Setup
 
