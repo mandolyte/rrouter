@@ -9,7 +9,7 @@ jobs:
       id: hello
       uses: unfoldingWord-box3/react-to-electron-action@v1
       with:
-        who-to-greet: 'Mona the Octocat'
+        who-to-greet: 'Mona the Octokitty'
     # Use the output from the `hello` step
     - name: Get the output time
       run: echo "The time was ${{ steps.hello.outputs.time }}"
