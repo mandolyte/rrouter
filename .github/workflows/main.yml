@@ -1,15 +1,21 @@
 on: [push]
 
 jobs:
-  hello_world_job:
+  convert-to-electron:
     runs-on: ubuntu-latest
-    name: A job to say hello
+    name: A job to convert to electron
     steps:
-    - name: Hello world action step
-      id: hello
+    - name: Convert step
+      id: convert
       uses: unfoldingWord-box3/react-to-electron-action@v1
       with:
-        who-to-greet: 'Mona the Octokitty'
+        appname: 'rrouter'
+        appid: 'io.github.mandolyte'
+        path: 'rrouter'
     # Use the output from the `hello` step
-    - name: Get the output time
-      run: echo "The time was ${{ steps.hello.outputs.time }}"
+    - name: Get outputs (the inputs)
+      run: |
+        echo "The appname was ${{ steps.convert.outputs.appname }}"
+        echo "The appid was ${{ steps.convert.outputs.appid }}"
+        echo "The path was ${{ steps.convert.outputs.path }}"
+        
