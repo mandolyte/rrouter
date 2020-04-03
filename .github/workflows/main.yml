@@ -59,7 +59,7 @@ jobs:
         id: convert
         uses: unfoldingWord-box3/react-to-electron-action@v1.0.4
         with:
-          appname: ${pkgname}
+          appname: 'rrouter'
           appid: 'io.github.mandolyte'
           path: 'rrouter'
 
