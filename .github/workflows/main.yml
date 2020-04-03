@@ -56,11 +56,12 @@ jobs:
       # convert to electron
       - name: Convert step
         id: convert
-        uses: unfoldingWord-box3/react-to-electron-action@v1.0.5
+        uses: unfoldingWord-box3/react-to-electron-action@v1.0.6
         with:
           appname: 'rrouter'
           appid: 'io.github.mandolyte'
           path: 'rrouter'
+          version: '1.0.0'
 
       - name: Get outputs (the inputs)
         run: |
