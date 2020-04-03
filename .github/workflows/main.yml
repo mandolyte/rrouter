@@ -58,7 +58,7 @@ jobs:
         id: convert
         uses: unfoldingWord-box3/react-to-electron-action@v1.0.4
         with:
-          appname: ${pkgname}
+          appname: 'rrouter'
           appid: 'io.github.mandolyte'
           path: 'rrouter'
 
@@ -67,4 +67,6 @@ jobs:
           echo "The appname was ${{ steps.convert.outputs.appname }}"
           echo "The appid was ${{ steps.convert.outputs.appid }}"
           echo "The path was ${{ steps.convert.outputs.path }}"
+          echo "artifact name is ${artifactname}"
+          echo "   asset name is ${assetname}"
         
