@@ -5,14 +5,65 @@ jobs:
     runs-on: ubuntu-latest
     name: A job to convert to electron
     steps:
-    - name: Convert step
-      id: convert
-      uses: unfoldingWord-box3/react-to-electron-action@v1.0.3
-      with:
-        appname: 'rrouter'
-        appid: 'io.github.mandolyte'
-        path: 'rrouter'
-    # Use the output from the `hello` step
+      - name: Show Env
+        run: |
+          echo Home is $HOME 
+          echo Working Directory is $GITHUB_WORKSPACE
+          echo OS is ${{ matrix.os }}
+          echo Version is ${GITHUB_REF##*v}
+        shell: bash
+
+      - name: Checkout Code
+        uses: actions/checkout@v2
+      
+      - name: set tag version
+        shell: bash
+        run: |
+          echo "::set-env name=version::${GITHUB_REF##*v}"
+
+      - name: set package name
+        shell: bash
+        run: |
+          echo "::set-env name=package::${pkg}"
+        env:
+          pkg: rrouter
+
+      # set artifact and asset names for platforms
+      - name: set artifact&asset name for ubuntu
+        if: runner.os=='linux'
+        run: |
+          echo "::set-env name=artifactname::${pkgname}_${version}_amd64.deb"
+          echo "::set-env name=assetname::${pkgname}_${version}_amd64.deb"
+      
+      - name: set artifact&asset name for windows
+        shell: bash
+        if: runner.os=='windows'
+        run: |
+          echo "::set-env name=artifactname::${pkgname} Setup ${version}.exe"
+          echo "::set-env name=assetname::${pkgname} Setup ${version}.exe"        
+      
+      - name: set artifact&asset name for macos
+        shell: bash
+        if: runner.os=='macos'
+        run: |
+          echo "::set-env name=artifactname::${pkgname}-${version}.dmg"
+          echo "::set-env name=assetname::${pkgname}-${version}.dmg"        
+
+      # setup node
+      - name: Use node
+        uses: actions/setup-node@v1
+      
+
+      # convert to electron
+      - name: Convert step
+        id: convert
+        uses: unfoldingWord-box3/react-to-electron-action@v1.0.4
+        with:
+          appname: $pkgname
+          appid: 'io.github.mandolyte'
+          path: 'rrouter'
+
+
     - name: Get outputs (the inputs)
       run: |
         echo "The appname was ${{ steps.convert.outputs.appname }}"
