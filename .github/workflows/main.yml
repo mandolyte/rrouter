@@ -53,20 +53,18 @@ jobs:
       - name: Use node
         uses: actions/setup-node@v1
       
-
       # convert to electron
       - name: Convert step
         id: convert
         uses: unfoldingWord-box3/react-to-electron-action@v1.0.4
         with:
-          appname: 'rrouter'
+          appname: ${pkgname}
           appid: 'io.github.mandolyte'
           path: 'rrouter'
 
-
-    - name: Get outputs (the inputs)
-      run: |
-        echo "The appname was ${{ steps.convert.outputs.appname }}"
-        echo "The appid was ${{ steps.convert.outputs.appid }}"
-        echo "The path was ${{ steps.convert.outputs.path }}"
+      - name: Get outputs (the inputs)
+        run: |
+          echo "The appname was ${{ steps.convert.outputs.appname }}"
+          echo "The appid was ${{ steps.convert.outputs.appid }}"
+          echo "The path was ${{ steps.convert.outputs.path }}"
         
