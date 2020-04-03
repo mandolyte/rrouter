@@ -16,39 +16,6 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v2
       
-      - name: set tag version
-        shell: bash
-        run: |
-          echo "::set-env name=version::${GITHUB_REF##*v}"
-
-      - name: set package name
-        shell: bash
-        run: |
-          echo "::set-env name=package::${pkg}"
-        env:
-          pkg: rrouter
-
-      # set artifact and asset names for platforms
-      - name: set artifact&asset name for ubuntu
-        if: runner.os=='linux'
-        run: |
-          echo "::set-env name=artifactname::${pkgname}_${version}_amd64.deb"
-          echo "::set-env name=assetname::${pkgname}_${version}_amd64.deb"
-      
-      - name: set artifact&asset name for windows
-        shell: bash
-        if: runner.os=='windows'
-        run: |
-          echo "::set-env name=artifactname::${pkgname} Setup ${version}.exe"
-          echo "::set-env name=assetname::${pkgname} Setup ${version}.exe"        
-      
-      - name: set artifact&asset name for macos
-        shell: bash
-        if: runner.os=='macos'
-        run: |
-          echo "::set-env name=artifactname::${pkgname}-${version}.dmg"
-          echo "::set-env name=assetname::${pkgname}-${version}.dmg"        
-
       # setup node
       - name: Use node
         uses: actions/setup-node@v1
@@ -56,7 +23,7 @@ jobs:
       # convert to electron
       - name: Convert step
         id: convert
-        uses: unfoldingWord-box3/react-to-electron-action@v1.0.8
+        uses: unfoldingWord-box3/react-to-electron-action@v1.0.9
         with:
           appname: 'rrouter'
           appid: 'io.github.mandolyte'
@@ -70,4 +37,21 @@ jobs:
           echo "The path was ${{ steps.convert.outputs.path }}"
           echo "artifact name is ${artifactname}"
           echo "   asset name is ${assetname}"
-        
+
+      # show the platform installers
+      - name: show platforms
+        run: ls ./dist
+        working-directory: ./electron
+        shell: bash
+      
+      # upload the assets to the release
+      - name: Upload Release Assets
+        uses: svenstaro/upload-release-action@v1-release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          file: "./electron/dist/${{ env.artifactname }}"
+          asset_name: ${{ env.assetname }}
+          tag: ${{ github.ref }}
+          overwrite: true
