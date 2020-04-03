@@ -23,7 +23,7 @@ jobs:
       # convert to electron
       - name: Convert step
         id: convert
-        uses: unfoldingWord-box3/react-to-electron-action@v1.0.9
+        uses: unfoldingWord-box3/react-to-electron-action@v1.0.10
         with:
           appname: 'rrouter'
           appid: 'io.github.mandolyte'
@@ -35,8 +35,8 @@ jobs:
           echo "The appname was ${{ steps.convert.outputs.appname }}"
           echo "The appid was ${{ steps.convert.outputs.appid }}"
           echo "The path was ${{ steps.convert.outputs.path }}"
-          echo "artifact name is ${artifactname}"
-          echo "   asset name is ${assetname}"
+          echo "artifact name is ${{ steps.convert.outputs.artifactname }}"
+          echo "   asset name is ${{ steps.convert.outputs.assetname }}"
 
       # show the platform installers
       - name: show platforms
