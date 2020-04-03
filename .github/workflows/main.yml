@@ -1,5 +1,8 @@
 # test workflow for react to electron action
-on: [push]
+on:
+  push:
+    tags:
+      - 'v*' # any push with a tag in semver format
 
 jobs:
   convert-to-electron:
@@ -52,7 +55,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
-          file: "./electron/dist/${{ env.artifactname }}"
-          asset_name: ${{ env.assetname }}
+          file: "./electron/dist/${{ steps.convert.outputs.artifactname }}"
+          asset_name: ${{ steps.convert.outputs.assetname }}
           tag: ${{ github.ref }}
           overwrite: true
