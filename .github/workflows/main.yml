@@ -6,7 +6,11 @@ on:
 
 jobs:
   convert-to-electron:
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+
     name: A job to convert to electron
     steps:
       - name: Show Env
