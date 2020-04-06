@@ -32,6 +32,7 @@ jobs:
       - name: Convert step
         id: convert
         uses: unfoldingWord-box3/react-to-electron-action@v1.0.14
+        shell: bash
         with:
           appname: 'rrouter'
           appid: 'io.github.mandolyte'
